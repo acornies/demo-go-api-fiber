@@ -2,7 +2,10 @@ module github.com/acornies/demo-go-api-fiber
 
 go 1.17
 
-require github.com/gofiber/fiber/v2 v2.23.0
+require (
+	github.com/gofiber/fiber/v2 v2.23.0
+	github.com/lib/pq v1.10.4
+)
 
 require (
 	github.com/andybalholm/brotli v1.0.2 // indirect
