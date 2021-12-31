@@ -6,7 +6,6 @@ require (
 	github.com/gofiber/fiber/v2 v2.23.0
 	github.com/ironarachne/namegen v0.0.0-20211012113950-3ce0a2c0678e
 	github.com/lib/pq v1.10.4
-	github.com/tjarratt/babble v0.0.0-20210505082055-cbca2a4833c1
 )
 
 require (

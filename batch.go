@@ -1,13 +1,40 @@
 package main
 
 import (
-	"fmt"
 	"log"
+	"math/rand"
 	"time"
 
 	"github.com/ironarachne/namegen"
-	"github.com/tjarratt/babble"
 )
+
+var origins = []string{
+	"anglosaxon",
+	"dutch",
+	"dwarf",
+	"elf",
+	"english",
+	"estonian",
+	"fantasy",
+	"finnish",
+	"french",
+	"german",
+	"greek",
+	"hindu",
+	"icelandic",
+	"indonesian",
+	"italian",
+	"japanese",
+	"korean",
+	"mayan",
+	"nepalese",
+	"norwegian",
+	"portuguese",
+	"russian",
+	"spanish",
+	"swedish",
+	"thai",
+}
 
 func DoBatchTask(name string) {
 	// Connect with database
@@ -19,14 +46,14 @@ func DoBatchTask(name string) {
 	switch name {
 	case "create-todo":
 		t := new(Todo)
-		generator := namegen.NameGeneratorFromType("english", "both")
-		name, err := generator.CompleteName("both")
+		rand.Seed(time.Now().Unix())
+		pick := origins[rand.Intn(len(origins))]
+		generator := namegen.NameGeneratorFromType(pick, "both")
+		fullName, err := generator.CompleteName("both")
 		if err != nil {
-			log.Fatalf("Failed to generate name: %v", err)
+			log.Fatalf("Failed to generate full name: %v", err)
 		}
-		babbler := babble.NewBabbler()
-		babbler.Separator = " "
-		t.Description = fmt.Sprintf("%s %s", babbler.Babble(), name)
+		t.Description = fullName
 		t.DueDate = time.Now().AddDate(0, 0, 1)
 		// Insert Todo into database
 		_, err = db.Query("INSERT INTO todos (description, due_date) VALUES ($1, $2)", t.Description, t.DueDate)
@@ -34,6 +61,6 @@ func DoBatchTask(name string) {
 			log.Fatalf("Failed to create todo: %v", err)
 		}
 		// Print result
-		log.Printf("Created %s todo item\n", name)
+		log.Printf("Created %s todo item\n", fullName)
 	}
 }

@@ -74,7 +74,7 @@ func main() {
 
 		app.Get("/todos", func(c *fiber.Ctx) error {
 			// Select all todo items from database
-			rows, err := db.Query("SELECT id, description, due_date FROM todos order by id")
+			rows, err := db.Query("SELECT id, description, due_date FROM todos order by id DESC")
 			if err != nil {
 				return c.Status(500).SendString(err.Error())
 			}
