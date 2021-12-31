@@ -72,6 +72,8 @@ func main() {
 			return c.SendString("Hello, World 👋 with database connection!")
 		})
 
+		app.Static("/static", "./static")
+
 		app.Get("/todos", func(c *fiber.Ctx) error {
 			// Select all todo items from database
 			rows, err := db.Query("SELECT id, description, due_date FROM todos order by id DESC")

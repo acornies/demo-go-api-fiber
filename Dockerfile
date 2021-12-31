@@ -28,7 +28,7 @@ COPY --from=builder /app/demo-go-api-fiber .
 
 # COPY --from=builder /app/templates templates
 
-# COPY --from=builder /app/static static
+COPY --from=builder /app/static static
 
 RUN adduser -S -D -H -h /app demo-go-api-fiber
 USER demo-go-api-fiber
