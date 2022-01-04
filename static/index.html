@@ -5,21 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/demo.css">
+  <link rel="stylesheet" href="/demo/static/demo.css">
   <title>Nomad Web Services Demo</title>
 </head>
 
 <body>
-  <h1>Nomad Web Services Demo</h1>
+
   <div class="container-fluid">
-    <div class="row" id="name-list">
-      <div class="col-md-1" v-for="item in todos">
-        {{ item.Description }}
-      </div>
-    </div>
+    <h1>Nomad Tech Demo</h1>
+    <p class="lead">Name generator facilitated with batch and service jobs, using Vault database secrets to PostgreSQL.
+    </p>
+    <table class="table table-striped" id="name-list">
+      <thead>
+        <tr>
+          <td>
+            #
+          </td>
+          <td>
+            Full Name
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in todos">
+          <td>{{ item.ID }}</td>
+          <td>{{ item.Description }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <script src="https://unpkg.com/vue@next"></script>
-  <script src="/static/index.js"></script>
+  <script src="/demo/static/index.js"></script>
 </body>
 
 </html>

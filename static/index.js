@@ -8,7 +8,7 @@ const demoApp = {
   methods: {
     fetchTodos() {
       this.loading = true;
-      fetch(`/todos`)
+      fetch(`/demo/todos`)
         .then(response => response.json())
         .then(response => {
           this.loading = false;
